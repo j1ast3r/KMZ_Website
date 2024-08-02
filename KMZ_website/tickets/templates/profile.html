@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Profile{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="profile-container">
+    <h1>Profile</h1>
+    <div class="profile-info">
+        <div class="profile-avatar">
+            <img src="{% static 'images/default_avatar.png' %}" alt="User Avatar">
+        </div>
+        <div class="profile-details">
+            <h2>{{ user.username }}</h2>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>First Name:</strong> {{ user.first_name }}</p>
+            <p><strong>Last Name:</strong> {{ user.last_name }}</p>
+        </div>
+    </div>
+    <div class="profile-actions">
+        <a href="{% url 'edit_profile' %}" class="btn">Edit Profile</a>
+        <a href="{% url 'change_password' %}" class="btn">Change Password</a>
+        <form method="post" action="{% url 'logout' %}" style="display: inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Logout</button>
+        </form>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.querySelector('.btn-danger').addEventListener('click', function(e) {
+        e.preventDefault();
+        if (confirm('Are you sure you want to logout?')) {
+            this.closest('form').submit();
+        }
+    });
+</script>
+{% endblock %}

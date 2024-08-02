@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ event.name }} - Tickets{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="content-wrapper">
+    <section class="stage-section">
+        <h1>{{ event.name }}</h1>
+        <h1>BÜHNE</h1>
+        <div class="legend">
+            <div class="legend-item">
+                <span class="legend-color verfügbar"></span>
+                <span>Verfügbar</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color reserviert"></span>
+                <span>Reserviert</span>
+            </div>
+            <div class="legend-item">
+                <span class="legend-color besetzt"></span>
+                <span>Besetzt</span>
+            </div>
+        </div>
+        <div class="seating-area">
+            <div id="seating-chart"></div>
+            <img src="{% static 'images/bg.png' %}" alt="Stage Background" class="custom-bg">
+        </div>
+    </section>
+
+    <section class="selected-seats">
+        <h2>Deine ausgewählten Plätze</h2>
+        <div id="selected-seats-list"></div>
+        <div class="total-price">Gesamtpreis: € 0.00</div>
+        <button id="reserve-button" class="action-button">Reservieren</button>
+        <button id="buy-button" class="action-button">Kaufen</button>
+    </section>
+</div>
+
+<meta name="event-id" content="{{ event.id }}">
+<script id="seats-data" type="application/json">
+    const svgPaths = {{ seats_data|safe }};
+</script>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/svgPaths.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+{% endblock %}

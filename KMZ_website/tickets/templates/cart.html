@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="cart-container">
+    <h2 class="cart-title">Ihr Warenkorb</h2>
+    {% if tickets %}
+        <div class="cart-items">
+            {% for ticket in tickets %}
+                <div class="cart-item">
+                    <div class="item-image">
+                        <img src="{{ ticket.event.image.url }}" alt="{{ ticket.event.name }}">
+                    </div>
+                    <div class="item-details">
+                        <h3>{{ ticket.event.name }}</h3>
+                        <div class="item-info">
+                            <p><strong>Datum:</strong> {{ ticket.event.date|date:"d.m.Y" }}</p>
+                            <p><strong>Zeit:</strong> {{ ticket.event.time|time:"H:i" }}</p>
+                            <p><strong>Ort:</strong> {{ ticket.event.venue }}</p>
+                            <p><strong>Reihe:</strong> {{ ticket.seat.row }}</p>
+                            <p><strong>Sitz:</strong> {{ ticket.seat.number }}</p>
+                            <p><strong>Preis:</strong> € {{ ticket.seat.price }}</p>
+                            <p><strong>Status:</strong>
+                                {% if ticket.is_reserved %}
+                                    Reserviert
+                                {% elif ticket.is_purchased %}
+                                    Gekauft
+                                {% endif %}
+                            </p>
+                        </div>
+                        <a href="{% url 'remove_from_cart' ticket.id %}" class="remove-btn">Entfernen</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="cart-summary">
+            <div class="total-price">Gesamtpreis: € {{ total_price }}</div>
+            <div id="paypal-button-container"></div>
+        </div>
+    {% else %}
+        <p class="empty-cart">Ihr Warenkorb ist leer.</p>
+    {% endif %}
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://www.paypal.com/sdk/js?client-id=AdioF0CwPc3_ZQThmN7z7dy1aIAGUTbeJWHsl7aH8x6kMguJVNkjOeyIF006_145RNj7rO9F-xAaTUhN&currency=EUR"></script>
+<script>
+    paypal.Buttons({
+        createOrder: function(data, actions) {
+            return actions.order.create({
+                purchase_units: [{
+                    amount: {
+                        value: '{{ total_price }}'
+                    }
+                }]
+            });
+        },
+        onApprove: function(data, actions) {
+            return actions.order.capture().then(function(details) {
+                alert('Transaktion abgeschlossen von ' + details.payer.name.given_name);
+                window.location.href = '/order-confirmation/';
+            });
+        }
+    }).render('#paypal-button-container');
+</script>
+{% endblock %}

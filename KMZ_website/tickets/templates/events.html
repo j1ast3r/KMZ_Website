@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Events{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="events-container">
+    {% for event in events %}
+    <div class="event">
+        <div class="event-image">
+            <img src="{{ event.image.url }}" alt="{{ event.name }}">
+        </div>
+        <div class="event-details">
+            <h2>{{ event.name }}</h2>
+            <p><strong>Location:</strong> Pulheim 50259</p>
+            <p><strong>Date:</strong> {{ event.date|date:"d.m.Y" }}</p>
+            <p><strong>Time:</strong> {{ event.time|time:"H:i" }}</p>
+            <p><strong>Price:</strong> €{{ event.price }}</p>
+            <p>{{ event.description|truncatewords:30 }}</p>
+            <a href="{% url 'event_detail' event.id %}" class="buy-ticket">Tickets kaufen</a>
+            <form action="{% url 'add_to_cart' %}" method="post" style="display: inline;">
+                {% csrf_token %}
+                <input type="hidden" name="event_id" value="{{ event.id }}">
+            </form>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

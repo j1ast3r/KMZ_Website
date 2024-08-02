@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Über Uns - Ticketverkauf{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/styles.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="about-us-container">
+    <h1 class="about-us-title">Über Uns</h1>
+
+    <section class="about-us-intro">
+        <img src="{% static 'images/about-us-header.png' %}" alt="Unser Team" class="about-us-image">
+        <p class="about-us-description">
+            Willkommen bei Ticketverkauf - Ihrem vertrauenswürdigen Partner für unvergessliche Veranstaltungen. Seit über einem Jahrzehnt bringen wir Menschen und Events zusammen.
+        </p>
+    </section>
+
+    <section class="our-mission">
+        <h2>Unsere Mission</h2>
+        <p>
+            Wir glauben daran, dass jedes Event eine einzigartige Erfahrung ist. Unsere Mission ist es, den Zugang zu diesen Erlebnissen so einfach und angenehm wie möglich zu gestalten.
+        </p>
+    </section>
+
+    <section class="our-services">
+        <h2>Unsere Dienstleistungen</h2>
+        <div class="services-grid">
+            <div class="service-item">
+                <img src="{% static 'images/ticket.png' %}" alt="Ticketverkauf">
+                <h3>Ticketverkauf</h3>
+                <p>Schnell, sicher und unkompliziert</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/icon-event.png' %}" alt="Eventmanagement">
+                <h3>Eventmanagement</h3>
+                <p>Professionelle Unterstützung für Veranstalter</p>
+            </div>
+            <div class="service-item">
+                <img src="{% static 'images/icon-support.png' %}" alt="Kundenservice">
+                <h3>Kundenservice</h3>
+                <p>Persönliche Betreuung rund um die Uhr</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials">
+        <h2>Was unsere Kunden sagen</h2>
+        <div class="testimonial-carousel">
+            <div class="testimonial-item">
+                <p>"Einfach großartig! Schnell, zuverlässig und immer die besten Plätze."</p>
+                - Maria S., treue Kundin
+            </div>
+            <div class="testimonial-item">
+                <p>"Als Veranstalter schätze ich die professionelle Zusammenarbeit sehr."</p>
+                - Thomas M., Eventmanager
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-us">
+        <h2>Kontaktieren Sie uns</h2>
+        <h2>015753260399</h2>
+        <p>Haben Sie Fragen oder Anregungen? Wir sind für Sie da!</p>
+
+    </section>
+</div>
+{% endblock %}

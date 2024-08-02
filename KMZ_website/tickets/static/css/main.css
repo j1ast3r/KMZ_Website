@@ -1,0 +1,35 @@
+<style>
+    .navbar {
+        display: inline-flex;
+        list-style: none;
+        padding: 0;
+    }
+
+    .navbar li {
+        flex-grow: 1;
+        text-align: center;
+    }
+
+    .navlink {
+        display: inline-block;
+        padding: 10px 20px;
+        text-decoration: none;
+        color: #333300;
+        border-radius: 5px;
+    }
+
+    .navlink:hover {
+        background-color: #ffe9c0; /*цвет хoverинга */
+    }
+
+</style>
+
+<div>
+    <nav>
+        <ul class="navbar">
+            <li><a href="/" class="navlink">Главная</a></li>
+            <li><a href="/about" class="navlink">О нас</a></li>
+            <li><a href="/contacts" class="navlink">Контакты</a></li>
+        </ul>
+    </nav>
+</div>

@@ -1,0 +1,168 @@
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #DAFDFD;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #218A8F;
+    border-radius: 0 0 7px 7px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    background-image: url('path_to_logo.png');
+    background-size: cover;
+}
+
+.main-nav {
+    display: flex;
+    gap: 10px;
+}
+
+.nav-item {
+    padding: 5px 15px;
+    background-color: #B0E7EA;
+    border-radius: 20px;
+    color: #161010;
+    text-decoration: none;
+}
+
+.user-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.user-icon, .cart-icon {
+    width: 30px;
+    height: 30px;
+    background-size: cover;
+}
+
+.content-wrapper {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.stage-section {
+    flex: 2;
+}
+
+.legend {
+    display: flex;
+    justify-content: flex-start;
+    gap: 20px;
+    margin-bottom: 20px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.legend-color {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.verfügbar { background-color: #4CAF50; }
+.reserviert { background-color: #FFC107; }
+.besetzt { background-color: #F44336; }
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.seating-area {
+    position: relative;
+}
+
+#seating-chart {
+    position: relative;
+    z-index: 2;
+}
+
+.stage-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+}
+
+.selected-seats {
+    flex: 1;
+    background-color: #B0E7EA;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+h2 {
+    margin-top: 0;
+}
+
+#selected-seats-list {
+    margin-bottom: 20px;
+}
+
+.seat-item {
+    background-color: white;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.remove-seat {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.checkout-button {
+    width: 100%;
+    padding: 10px;
+    background-color: #4DACF0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+}
+
+.main-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #218A8F;
+    border-radius: 7px 7px 0 0;
+}
+
+.phone-number {
+    color: white;
+    text-decoration: none;
+}
